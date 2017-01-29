@@ -7,6 +7,10 @@ public class WebPageDto {
 
     private String url;
 
+    private String domain;
+
+    private String thumbnail;
+
     private String content;
 
     public Integer getId() {
@@ -31,6 +35,22 @@ public class WebPageDto {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public String getContent() {

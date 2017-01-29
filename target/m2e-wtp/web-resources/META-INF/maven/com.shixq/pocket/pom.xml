@@ -133,6 +133,12 @@
 			<version>1.2.24</version>
 		</dependency>
 
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.40</version>
+		</dependency>
+		
 		<!-- 添加druid连接池包 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>

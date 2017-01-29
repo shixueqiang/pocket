@@ -5,16 +5,21 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="domain" property="domain" jdbcType="VARCHAR" />
+    <result column="thumbnail" property="thumbnail" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.shixq.pocket.bean.WebPageDto" extends="BaseResultMap" >
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, title, url
+    id, title, url, domain, thumbnail
   </sql>
   <sql id="Blob_Column_List" >
     content
   </sql>
+  <select id="webPageList" resultMap="ResultMapWithBLOBs">
+  	select * from webpage
+  </select>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -29,9 +34,11 @@
   </delete>
   <insert id="insert" parameterType="com.shixq.pocket.bean.WebPageDto" >
     insert into webpage (id, title, url, 
-      content)
+      domain, thumbnail, content
+      )
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
-      #{content,jdbcType=LONGVARCHAR})
+      #{domain,jdbcType=VARCHAR}, #{thumbnail,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.shixq.pocket.bean.WebPageDto" >
     insert into webpage
@@ -44,6 +51,12 @@
       </if>
       <if test="url != null" >
         url,
+      </if>
+      <if test="domain != null" >
+        domain,
+      </if>
+      <if test="thumbnail != null" >
+        thumbnail,
       </if>
       <if test="content != null" >
         content,
@@ -59,6 +72,12 @@
       <if test="url != null" >
         #{url,jdbcType=VARCHAR},
       </if>
+      <if test="domain != null" >
+        #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null" >
+        #{thumbnail,jdbcType=VARCHAR},
+      </if>
       <if test="content != null" >
         #{content,jdbcType=LONGVARCHAR},
       </if>
@@ -73,6 +92,12 @@
       <if test="url != null" >
         url = #{url,jdbcType=VARCHAR},
       </if>
+      <if test="domain != null" >
+        domain = #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null" >
+        thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      </if>
       <if test="content != null" >
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
@@ -83,13 +108,17 @@
     update webpage
     set title = #{title,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
+      domain = #{domain,jdbcType=VARCHAR},
+      thumbnail = #{thumbnail,jdbcType=VARCHAR},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shixq.pocket.bean.WebPageDto" >
     update webpage
     set title = #{title,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR}
+      url = #{url,jdbcType=VARCHAR},
+      domain = #{domain,jdbcType=VARCHAR},
+      thumbnail = #{thumbnail,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

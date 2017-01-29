@@ -1,5 +1,7 @@
 package com.shixq.pocket.dao;
 
+import java.util.List;
+
 import com.shixq.pocket.bean.WebPageDto;
 
 public interface WebPageDtoMapper {
@@ -16,4 +18,6 @@ public interface WebPageDtoMapper {
     int updateByPrimaryKeyWithBLOBs(WebPageDto record);
 
     int updateByPrimaryKey(WebPageDto record);
+    
+    List<WebPageDto> webPageList();
 }
