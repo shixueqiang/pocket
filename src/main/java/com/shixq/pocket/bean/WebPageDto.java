@@ -11,6 +11,12 @@ public class WebPageDto {
 
     private String thumbnail;
 
+    private String textpath;
+
+    private String webpath;
+
+    private Integer userid;
+
     private String content;
 
     public Integer getId() {
@@ -51,6 +57,30 @@ public class WebPageDto {
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public String getTextpath() {
+        return textpath;
+    }
+
+    public void setTextpath(String textpath) {
+        this.textpath = textpath;
+    }
+
+    public String getWebpath() {
+        return webpath;
+    }
+
+    public void setWebpath(String webpath) {
+        this.webpath = webpath;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public String getContent() {

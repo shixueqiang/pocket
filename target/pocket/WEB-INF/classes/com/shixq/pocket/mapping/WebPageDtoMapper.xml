@@ -1,113 +1,162 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.shixq.pocket.dao.WebPageDtoMapper">
-	<resultMap id="BaseResultMap" type="com.shixq.pocket.bean.WebPageDto">
-		<id column="id" property="id" jdbcType="INTEGER" />
-		<result column="title" property="title" jdbcType="VARCHAR" />
-		<result column="url" property="url" jdbcType="VARCHAR" />
-		<result column="domain" property="domain" jdbcType="VARCHAR" />
-	</resultMap>
-	<resultMap id="ResultMapWithBLOBs" type="com.shixq.pocket.bean.WebPageDto"
-		extends="BaseResultMap">
-		<result column="content" property="content" jdbcType="LONGVARCHAR" />
-	</resultMap>
-	<sql id="Base_Column_List">
-		id, title, url, domain
-	</sql>
-	<sql id="Blob_Column_List">
-		content
-	</sql>
-	<select id="webPageList" resultMap="ResultMapWithBLOBs">
-		select * from webpage
-	</select>
-	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
-		parameterType="java.lang.Integer">
-		select
-		<include refid="Base_Column_List" />
-		,
-		<include refid="Blob_Column_List" />
-		from webpage
-		where id = #{id,jdbcType=INTEGER}
-	</select>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from webpage
-		where id = #{id,jdbcType=INTEGER}
-	</delete>
-	<insert id="insert" parameterType="com.shixq.pocket.bean.WebPageDto">
-		insert into webpage (id, title, url,
-		domain, content)
-		values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
-		#{url,jdbcType=VARCHAR},
-		#{domain,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
-	</insert>
-	<insert id="insertSelective" parameterType="com.shixq.pocket.bean.WebPageDto">
-		insert into webpage
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				id,
-			</if>
-			<if test="title != null">
-				title,
-			</if>
-			<if test="url != null">
-				url,
-			</if>
-			<if test="domain != null">
-				domain,
-			</if>
-			<if test="content != null">
-				content,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				#{id,jdbcType=INTEGER},
-			</if>
-			<if test="title != null">
-				#{title,jdbcType=VARCHAR},
-			</if>
-			<if test="url != null">
-				#{url,jdbcType=VARCHAR},
-			</if>
-			<if test="domain != null">
-				#{domain,jdbcType=VARCHAR},
-			</if>
-			<if test="content != null">
-				#{content,jdbcType=LONGVARCHAR},
-			</if>
-		</trim>
-	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="com.shixq.pocket.bean.WebPageDto">
-		update webpage
-		<set>
-			<if test="title != null">
-				title = #{title,jdbcType=VARCHAR},
-			</if>
-			<if test="url != null">
-				url = #{url,jdbcType=VARCHAR},
-			</if>
-			<if test="domain != null">
-				domain = #{domain,jdbcType=VARCHAR},
-			</if>
-			<if test="content != null">
-				content = #{content,jdbcType=LONGVARCHAR},
-			</if>
-		</set>
-		where id = #{id,jdbcType=INTEGER}
-	</update>
-	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.shixq.pocket.bean.WebPageDto">
-		update webpage
-		set title = #{title,jdbcType=VARCHAR},
-		url = #{url,jdbcType=VARCHAR},
-		domain = #{domain,jdbcType=VARCHAR},
-		content = #{content,jdbcType=LONGVARCHAR}
-		where id = #{id,jdbcType=INTEGER}
-	</update>
-	<update id="updateByPrimaryKey" parameterType="com.shixq.pocket.bean.WebPageDto">
-		update webpage
-		set title = #{title,jdbcType=VARCHAR},
-		url = #{url,jdbcType=VARCHAR},
-		domain = #{domain,jdbcType=VARCHAR}
-		where id = #{id,jdbcType=INTEGER}
-	</update>
+<mapper namespace="com.shixq.pocket.dao.WebPageDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.shixq.pocket.bean.WebPageDto" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="domain" property="domain" jdbcType="VARCHAR" />
+    <result column="thumbnail" property="thumbnail" jdbcType="VARCHAR" />
+    <result column="textpath" property="textpath" jdbcType="VARCHAR" />
+    <result column="webpath" property="webpath" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.shixq.pocket.bean.WebPageDto" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, url, domain, thumbnail, textpath, webpath, userId
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="webPageList" resultMap="ResultMapWithBLOBs">
+  	select * from webpage order by id desc
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from webpage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from webpage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shixq.pocket.bean.WebPageDto" >
+    insert into webpage (id, title, url, 
+      domain, thumbnail, textpath, 
+      webpath, userId, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{domain,jdbcType=VARCHAR}, #{thumbnail,jdbcType=VARCHAR}, #{textpath,jdbcType=VARCHAR}, 
+      #{webpath,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shixq.pocket.bean.WebPageDto" >
+    insert into webpage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="domain != null" >
+        domain,
+      </if>
+      <if test="thumbnail != null" >
+        thumbnail,
+      </if>
+      <if test="textpath != null" >
+        textpath,
+      </if>
+      <if test="webpath != null" >
+        webpath,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="domain != null" >
+        #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null" >
+        #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="textpath != null" >
+        #{textpath,jdbcType=VARCHAR},
+      </if>
+      <if test="webpath != null" >
+        #{webpath,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shixq.pocket.bean.WebPageDto" >
+    update webpage
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="domain != null" >
+        domain = #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="thumbnail != null" >
+        thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="textpath != null" >
+        textpath = #{textpath,jdbcType=VARCHAR},
+      </if>
+      <if test="webpath != null" >
+        webpath = #{webpath,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.shixq.pocket.bean.WebPageDto" >
+    update webpage
+    set title = #{title,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      domain = #{domain,jdbcType=VARCHAR},
+      thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      textpath = #{textpath,jdbcType=VARCHAR},
+      webpath = #{webpath,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shixq.pocket.bean.WebPageDto" >
+    update webpage
+    set title = #{title,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      domain = #{domain,jdbcType=VARCHAR},
+      thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      textpath = #{textpath,jdbcType=VARCHAR},
+      webpath = #{webpath,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

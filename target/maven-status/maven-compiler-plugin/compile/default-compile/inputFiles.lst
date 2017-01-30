@@ -1,4 +1,7 @@
+D:\Program Files\eclipse_workspace\pocket\src\main\java\com\shixq\pocket\utils\IteyeBlogProcessor.java
 D:\Program Files\eclipse_workspace\pocket\src\main\java\com\shixq\pocket\controller\IndexController.java
 D:\Program Files\eclipse_workspace\pocket\src\main\java\com\shixq\pocket\bean\WebPageDto.java
+D:\Program Files\eclipse_workspace\pocket\src\main\java\com\shixq\pocket\utils\WebPagePipeline.java
 D:\Program Files\eclipse_workspace\pocket\src\main\java\com\shixq\pocket\dao\WebPageDtoMapper.java
+D:\Program Files\eclipse_workspace\pocket\src\main\java\com\shixq\pocket\utils\WebPageProcessor.java
 D:\Program Files\eclipse_workspace\pocket\src\main\java\com\shixq\pocket\service\IndexService.java

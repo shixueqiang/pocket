@@ -635,7 +635,43 @@ transform
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(360deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -736,7 +772,7 @@ transform
 			</div>
 
 			<nav class="pkt-nav">
-				<div
+				<div id="nav_menu"
 					class="toolbar_queue toolbar navigationItem wrapper wrapper_full active">
 					<div class="toolbar_queue_divider"></div>
 					<h1 class="pocket_logo">Pocket</h1>
@@ -855,6 +891,24 @@ transform
 							<a class="bulkedit-cancel" href="#"></a>
 						</div>
 					</div>
+
+					<div id="addMenu"
+						class="popover-new addmenu-hideconnect shown popover-new-bottomleft"
+						style="display: block; left: 902.75px; top: 41.8333px;">
+						<div class="popover-new-header">
+							<a class="popover-new-close" href="#"></a>
+							<h2>保存项目到 Pocket</h2>
+						</div>
+						<div class="arrow"></div>
+						<div class="container">
+							<a class="saveurl-close" href="#">关闭</a>
+							<h5>保存项目到 Pocket</h5>
+							<p>为简化保存，*连接 Pocket 按钮*</p>
+							<input placeholder="http://..." style="display: inline-block;"
+								type="text"><a id="addUrl" href="#" class="button button-disabled">保存</a>
+						</div>
+					</div>
+
 				</div>
 				<div class="searchtoolbar_screenbar"></div>
 				<div
@@ -1063,183 +1117,37 @@ transform
 						</nav>
 					</div>
 					<ul id="queue" class="queue_list queue_list_main">
-						<li class="item item_type_normal" id="i155687347">
-							<div class="item_content">
-								<a class="item_link start_webview"
-									href="https://getpocket.com/redirect?url=https%3A%2F%2Fm.baidu.com%2F%3Ffrom%3D2001a%23iact%3Dwiseindex%252Ftabs%252Fnews%252Factivity%252Fnewsdetail%253D%25257B%252522linkData%252522%25253A%25257B%252522name%252522%25253A%252522iframe%25252Fmib-iframe%252522%25252C%252522id%252522%25253A%252522feed%252522%25252C%252522index%252522%25253A0%25252C%252522url%252522%25253A%252522https%25253A%25252F%25252Fm.baidu.com%25252Ffeed%25252Fdata%25252Flandingpage%25253Fnid%25253D4091300348624614183%252526n_type%25253D1%252526p_from%25253D2%252522%25252C%252522title%252522%25253A%252522%2525E7%25259C%2525BC%2525E7%25259C%25258B%2525E4%2525BB%252596%2525E8%2525B5%2525B7%2525E6%25259C%2525B&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603"
-									target="_blank"></a> <a class="title"
-									href="https://getpocket.com/redirect?url=https%3A%2F%2Fm.baidu.com%2F%3Ffrom%3D2001a%23iact%3Dwiseindex%252Ftabs%252Fnews%252Factivity%252Fnewsdetail%253D%25257B%252522linkData%252522%25253A%25257B%252522name%252522%25253A%252522iframe%25252Fmib-iframe%252522%25252C%252522id%252522%25253A%252522feed%252522%25252C%252522index%252522%25253A0%25252C%252522url%252522%25253A%252522https%25253A%25252F%25252Fm.baidu.com%25252Ffeed%25252Fdata%25252Flandingpage%25253Fnid%25253D4091300348624614183%252526n_type%25253D1%252526p_from%25253D2%252522%25252C%252522title%252522%25253A%252522%2525E7%25259C%2525BC%2525E7%25259C%25258B%2525E4%2525BB%252596%2525E8%2525B5%2525B7%2525E6%25259C%2525B&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603">百度一下</a>
-								<span class="thumb lazy-active" variant=""
-									style="background-image: url(&quot;<%=basePath%>images/tile_fallback@1x.jpg&quot;); background-repeat: repeat; background-size: 844px 591px;"></span>
-								<img class="favicon" data-originalurl="">
-								<div class="favstate"></div>
-								<ul class="sub clearfix">
-									<li class="original_url_container"><a class="original_url"
-										href="https://getpocket.com/redirect?url=https%3A%2F%2Fm.baidu.com%2F%3Ffrom%3D2001a%23iact%3Dwiseindex%252Ftabs%252Fnews%252Factivity%252Fnewsdetail%253D%25257B%252522linkData%252522%25253A%25257B%252522name%252522%25253A%252522iframe%25252Fmib-iframe%252522%25252C%252522id%252522%25253A%252522feed%252522%25252C%252522index%252522%25253A0%25252C%252522url%252522%25253A%252522https%25253A%25252F%25252Fm.baidu.com%25252Ffeed%25252Fdata%25252Flandingpage%25253Fnid%25253D4091300348624614183%252526n_type%25253D1%252526p_from%25253D2%252522%25252C%252522title%252522%25253A%252522%2525E7%25259C%2525BC%2525E7%25259C%25258B%2525E4%2525BB%252596%2525E8%2525B5%2525B7%2525E6%25259C%2525B&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603"
-										target="_blank" title="查看原始文档">m.baidu.com</a></li>
-									<li class="tags"><span class="tag_container"></span> <a
-										class="edit"><span>添加标记</span></a></li>
-								</ul>
-								<div class="clear"></div>
-								<ul class="buttons">
+						<c:forEach items="${webPages}" var="item">
+							<li class="item item_type_normal" id="${item.id }">
+								<div class="item_content">
+									<a class="item_link start_webview" href="${item.url }"
+										target="_blank"></a> <a class="title" href="${item.url }">${item.title }</a>
+									<span class="thumb lazy-active" variant=""
+										data-lazy-type="thumbnail" data-lazy-key="1574857730"
+										data-thumburl="${item.thumbnail }" data-thumbvariant="3"
+										data-hasplaybutton="false" data-shouldcache="true"
+										style="background-image: url(&quot;${item.thumbnail }&quot;); background-size: cover, 844px 591px; background-position: center center, center center;"></span>
+									<img class="favicon" data-originalurl="">
+									<div class="favstate"></div>
+									<ul class="sub clearfix">
+										<li class="original_url_container"><a
+											class="original_url" href="${item.url }" target="_blank"
+											title="查看原始文档">${item.domain }</a></li>
+										<li class="tags"><span class="tag_container"></span> <a
+											class="edit"><span>添加标记</span></a></li>
+									</ul>
+									<div class="clear"></div>
+									<ul class="buttons">
 
-									<li class="action_share" title="分享"><a href="#">分享</a></li>
-									<li class="action_mark" title="存档"><a href="#">存档</a></li>
-									<li class="action_delete" title="删除"><a href="#">删除</a></li>
-									<li class="action_tag" title="编辑标记"><a href="#">编辑标记</a></li>
-									<li class="action_favorite " title="添加到收藏夹"><a href="#">添加到收藏夹</a></li>
-								</ul>
-							</div>
-						</li>
-						<li class="item item_type_normal" id="i1577510461">
-							<div class="item_content">
-								<a class="item_link start_articleview"
-									href="https://getpocket.com/a/read/1577510461" target="_blank"></a>
-								<a class="title" href="https://getpocket.com/a/read/1577510461">liushuishang/YayCrawler</a>
-								<span class="thumb lazy-active" variant=""
-									style="background-image: url(&quot;<%=basePath%>images/tile_fallback@1x.jpg&quot;); background-repeat: repeat; background-size: 844px 591px;"></span>
-								<img class="favicon" data-originalurl="">
-								<div class="favstate"></div>
-								<ul class="sub clearfix">
-									<li class="original_url_container"><a class="original_url"
-										href="https://getpocket.com/redirect?url=https%3A%2F%2Fgithub.com%2Fliushuishang%2FYayCrawler&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603"
-										target="_blank" title="查看原始文档">github.com</a></li>
-									<li class="tags"><span class="tag_container"></span> <a
-										class="edit"><span>添加标记</span></a></li>
-								</ul>
-								<div class="clear"></div>
-								<ul class="buttons">
-
-									<li class="action_share" title="分享"><a href="#">分享</a></li>
-									<li class="action_mark" title="存档"><a href="#">存档</a></li>
-									<li class="action_delete" title="删除"><a href="#">删除</a></li>
-									<li class="action_tag" title="编辑标记"><a href="#">编辑标记</a></li>
-									<li class="action_favorite " title="添加到收藏夹"><a href="#">添加到收藏夹</a></li>
-								</ul>
-							</div>
-						</li>
-						<li class="item item_type_normal" id="i1577501843">
-							<div class="item_content">
-								<a class="item_link start_webview"
-									href="https://getpocket.com/redirect?url=https%3A%2F%2Fwww.google.com.hk%2Fsearch%3Fq%3D%25E9%2580%259A%25E7%2594%25A8%25E7%2588%25AC%25E8%2599%25AB%25E8%25A7%2584%25E5%2588%2599%26newwindow%3D1%26safe%3Dstrict%26ei%3Dpi6HWPzTEsSw0gSPt4ioDw%26start%3D10%26sa%3DN%26biw%3D1536%26bih%3D759&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603"
-									target="_blank"></a> <a class="title"
-									href="https://getpocket.com/redirect?url=https%3A%2F%2Fwww.google.com.hk%2Fsearch%3Fq%3D%25E9%2580%259A%25E7%2594%25A8%25E7%2588%25AC%25E8%2599%25AB%25E8%25A7%2584%25E5%2588%2599%26newwindow%3D1%26safe%3Dstrict%26ei%3Dpi6HWPzTEsSw0gSPt4ioDw%26start%3D10%26sa%3DN%26biw%3D1536%26bih%3D759&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603">通用爬虫规则</a>
-								<span class="thumb lazy-active" variant=""
-									style="background-image: url(&quot;<%=basePath%>images/tile_fallback@1x.jpg&quot;); background-repeat: repeat; background-size: 844px 591px;"></span>
-								<img class="favicon" data-originalurl="">
-								<div class="favstate"></div>
-								<ul class="sub clearfix">
-									<li class="original_url_container"><a class="original_url"
-										href="https://getpocket.com/redirect?url=https%3A%2F%2Fwww.google.com.hk%2Fsearch%3Fq%3D%25E9%2580%259A%25E7%2594%25A8%25E7%2588%25AC%25E8%2599%25AB%25E8%25A7%2584%25E5%2588%2599%26newwindow%3D1%26safe%3Dstrict%26ei%3Dpi6HWPzTEsSw0gSPt4ioDw%26start%3D10%26sa%3DN%26biw%3D1536%26bih%3D759&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603"
-										target="_blank" title="查看原始文档">google.com.hk</a></li>
-									<li class="tags"><span class="tag_container"></span> <a
-										class="edit"><span>添加标记</span></a></li>
-								</ul>
-								<div class="clear"></div>
-								<ul class="buttons">
-
-									<li class="action_share" title="分享"><a href="#">分享</a></li>
-									<li class="action_mark" title="存档"><a href="#">存档</a></li>
-									<li class="action_delete" title="删除"><a href="#">删除</a></li>
-									<li class="action_tag" title="编辑标记"><a href="#">编辑标记</a></li>
-									<li class="action_favorite " title="添加到收藏夹"><a href="#">添加到收藏夹</a></li>
-								</ul>
-							</div>
-						</li>
-						<li class="item item_type_normal" id="i1577494832">
-							<div class="item_content">
-								<a class="item_link start_articleview"
-									href="https://getpocket.com/a/read/1577494832" target="_blank"></a>
-								<a class="title" href="https://getpocket.com/a/read/1577494832">快速制作规则及获取规则提取器API</a>
-								<span class="thumb lazy-active" variant=""
-									data-lazy-type="thumbnail" data-lazy-key="1577494832"
-									data-thumburl="https://img.readitlater.com/i/img.blog.csdn.net/20161028095506008/RS/w125-h100.jpg?f=t&amp;ne=1&amp;lq=1"
-									data-thumbvariant="3" data-hasplaybutton="false"
-									data-shouldcache="true"
-									style="background-image: url(&quot;https://img.readitlater.com/i/img.blog.csdn.net/20161028095506008/RS/w125-h100.jpg?f=t&amp;ne=1&amp;lq=1&quot;); background-size: cover, 844px 591px; background-position: center center, center center;"></span>
-								<img class="favicon" data-originalurl="">
-								<div class="favstate"></div>
-								<ul class="sub clearfix">
-									<li class="original_url_container"><a class="original_url"
-										href="https://getpocket.com/redirect?url=http%3A%2F%2Fblog.csdn.net%2Ffullerhua%2Farticle%2Fdetails%2F52953709&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603"
-										target="_blank" title="查看原始文档">blog.csdn.net</a></li>
-									<li class="tags"><span class="tag_container"></span> <a
-										class="edit"><span>添加标记</span></a></li>
-								</ul>
-								<div class="clear"></div>
-								<ul class="buttons">
-
-									<li class="action_share" title="分享"><a href="#">分享</a></li>
-									<li class="action_mark" title="存档"><a href="#">存档</a></li>
-									<li class="action_delete" title="删除"><a href="#">删除</a></li>
-									<li class="action_tag" title="编辑标记"><a href="#">编辑标记</a></li>
-									<li class="action_favorite " title="添加到收藏夹"><a href="#">添加到收藏夹</a></li>
-								</ul>
-							</div>
-						</li>
-						<li class="item item_type_normal" id="i1567862405">
-							<div class="item_content">
-								<a class="item_link start_articleview"
-									href="https://getpocket.com/a/read/1567862405" target="_blank"></a>
-								<a class="title" href="https://getpocket.com/a/read/1567862405">【爬虫】WebMagic结合Spring
-									mvc爬取数据进行存储</a> <span class="thumb lazy-active" variant=""
-									data-lazy-type="thumbnail" data-lazy-key="1567862405"
-									data-thumburl="https://img.readitlater.com/i/img.blog.csdn.net/20160707184616538/RS/w125-h100.jpg?f=t&amp;ne=1&amp;lq=1"
-									data-thumbvariant="3" data-hasplaybutton="false"
-									data-shouldcache="true"
-									style="background-image: url(&quot;https://img.readitlater.com/i/img.blog.csdn.net/20160707184616538/RS/w125-h100.jpg?f=t&amp;ne=1&amp;lq=1&quot;); background-size: cover, 844px 591px; background-position: center center, center center;"></span>
-								<img class="favicon" data-originalurl="">
-								<div class="favstate"></div>
-								<ul class="sub clearfix">
-									<li class="original_url_container"><a class="original_url"
-										href="https://getpocket.com/redirect?url=http%3A%2F%2Fblog.csdn.net%2Fw1054993544%2Farticle%2Fdetails%2F51853425&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603"
-										target="_blank" title="查看原始文档">blog.csdn.net</a></li>
-									<li class="tags"><span class="tag_container"></span> <a
-										class="edit"><span>添加标记</span></a></li>
-								</ul>
-								<div class="clear"></div>
-								<ul class="buttons">
-
-									<li class="action_share" title="分享"><a href="#">分享</a></li>
-									<li class="action_mark" title="存档"><a href="#">存档</a></li>
-									<li class="action_delete" title="删除"><a href="#">删除</a></li>
-									<li class="action_tag" title="编辑标记"><a href="#">编辑标记</a></li>
-									<li class="action_favorite " title="添加到收藏夹"><a href="#">添加到收藏夹</a></li>
-								</ul>
-							</div>
-						</li>
-						<li class="item item_type_normal" id="i1574857730">
-							<div class="item_content">
-								<a class="item_link start_webview"
-									href="https://getpocket.com/redirect?url=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2385548008&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603"
-									target="_blank"></a> <a class="title"
-									href="https://getpocket.com/redirect?url=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2385548008&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603">转～网友第一次种西瓜，得出经验。以后再也不养哈士奇了→_→</a>
-								<span class="thumb lazy-active" variant=""
-									data-lazy-type="thumbnail" data-lazy-key="1574857730"
-									data-thumburl="https://img.readitlater.com/i/imgsrc.baidu.com/forum/w%3D580/sign=d07b555278310a55c424defc87444387/1715922bd40735fac18081189f510fb30f240828/RS/w125-h100.jpg?f=t&amp;lq=1"
-									data-thumbvariant="3" data-hasplaybutton="false"
-									data-shouldcache="true"
-									style="background-image: url(&quot;https://img.readitlater.com/i/imgsrc.baidu.com/forum/w%3D580/sign=d07b555278310a55c424defc87444387/1715922bd40735fac18081189f510fb30f240828/RS/w125-h100.jpg?f=t&amp;lq=1&quot;); background-size: cover, 844px 591px; background-position: center center, center center;"></span>
-								<img class="favicon" data-originalurl="">
-								<div class="favstate"></div>
-								<ul class="sub clearfix">
-									<li class="original_url_container"><a class="original_url"
-										href="https://getpocket.com/redirect?url=http%3A%2F%2Ftieba.baidu.com%2Fp%2F2385548008&amp;formCheck=b846fbf8d8fad691d7100eb818f0b603"
-										target="_blank" title="查看原始文档">tieba.baidu.com</a></li>
-									<li class="tags"><span class="tag_container"></span> <a
-										class="edit"><span>添加标记</span></a></li>
-								</ul>
-								<div class="clear"></div>
-								<ul class="buttons">
-
-									<li class="action_share" title="分享"><a href="#">分享</a></li>
-									<li class="action_mark" title="存档"><a href="#">存档</a></li>
-									<li class="action_delete" title="删除"><a href="#">删除</a></li>
-									<li class="action_tag" title="编辑标记"><a href="#">编辑标记</a></li>
-									<li class="action_favorite " title="添加到收藏夹"><a href="#">添加到收藏夹</a></li>
-								</ul>
-							</div>
-						</li>
+										<li class="action_share" title="分享"><a href="#">分享</a></li>
+										<li class="action_mark" title="存档"><a href="#">存档</a></li>
+										<li class="action_delete" title="删除"><a href="#">删除</a></li>
+										<li class="action_tag" title="编辑标记"><a href="#">编辑标记</a></li>
+										<li class="action_favorite " title="添加到收藏夹"><a href="#">添加到收藏夹</a></li>
+									</ul>
+								</div>
+							</li>
+						</c:forEach>
 						<li class="info-loading" style="display: none;"></li>
 					</ul>
 					<div
@@ -1553,8 +1461,8 @@ transform
 					allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https"
 					aria-hidden="true"
 					title="Facebook Cross Domain Communication Frame" tabindex="-1"
-					style="border: medium none;"
-					src="<%=basePath%>htm/Sh-3BhStODe.htm" frameborder="0"></iframe>
+					style="border: medium none;" src="<%=basePath%>htm/Sh-3BhStODe.htm"
+					frameborder="0"></iframe>
 			</div>
 		</div>
 		<div
@@ -1562,5 +1470,6 @@ transform
 			<div></div>
 		</div>
 	</div>
+	<script type="text/javascript" src="<%=basePath%>js/index.js"></script>
 </body>
 </html>

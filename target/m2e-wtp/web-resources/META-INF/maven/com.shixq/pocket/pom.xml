@@ -89,8 +89,8 @@
 		<!--JSTL -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.0-b01</version>
 		</dependency>
 
 		<dependency>
@@ -138,7 +138,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.40</version>
 		</dependency>
-		
+
 		<!-- 添加druid连接池包 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>

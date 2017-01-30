@@ -641,7 +641,31 @@ transform
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 :rotate(360deg)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -748,7 +772,7 @@ transform
 			</div>
 
 			<nav class="pkt-nav">
-				<div
+				<div id="nav_menu"
 					class="toolbar_queue toolbar navigationItem wrapper wrapper_full active">
 					<div class="toolbar_queue_divider"></div>
 					<h1 class="pocket_logo">Pocket</h1>
@@ -867,6 +891,24 @@ transform
 							<a class="bulkedit-cancel" href="#"></a>
 						</div>
 					</div>
+
+					<div id="addMenu"
+						class="popover-new addmenu-hideconnect shown popover-new-bottomleft"
+						style="display: block; left: 902.75px; top: 41.8333px;">
+						<div class="popover-new-header">
+							<a class="popover-new-close" href="#"></a>
+							<h2>保存项目到 Pocket</h2>
+						</div>
+						<div class="arrow"></div>
+						<div class="container">
+							<a class="saveurl-close" href="#">关闭</a>
+							<h5>保存项目到 Pocket</h5>
+							<p>为简化保存，*连接 Pocket 按钮*</p>
+							<input placeholder="http://..." style="display: inline-block;"
+								type="text"><a id="addUrl" href="#" class="button button-disabled">保存</a>
+						</div>
+					</div>
+
 				</div>
 				<div class="searchtoolbar_screenbar"></div>
 				<div
@@ -1078,23 +1120,19 @@ transform
 						<c:forEach items="${webPages}" var="item">
 							<li class="item item_type_normal" id="${item.id }">
 								<div class="item_content">
-									<a class="item_link start_webview"
-										href="${item.url }"
-										target="_blank"></a> <a class="title"
-										href="${item.url }">${item.title }</a>
+									<a class="item_link start_webview" href="${item.url }"
+										target="_blank"></a> <a class="title" href="${item.url }">${item.title }</a>
 									<span class="thumb lazy-active" variant=""
 										data-lazy-type="thumbnail" data-lazy-key="1574857730"
-										data-thumburl="${item.thumbnail }"
-										data-thumbvariant="3" data-hasplaybutton="false"
-										data-shouldcache="true"
+										data-thumburl="${item.thumbnail }" data-thumbvariant="3"
+										data-hasplaybutton="false" data-shouldcache="true"
 										style="background-image: url(&quot;${item.thumbnail }&quot;); background-size: cover, 844px 591px; background-position: center center, center center;"></span>
 									<img class="favicon" data-originalurl="">
 									<div class="favstate"></div>
 									<ul class="sub clearfix">
 										<li class="original_url_container"><a
-											class="original_url"
-											href="${item.url }"
-											target="_blank" title="查看原始文档">${item.domain }</a></li>
+											class="original_url" href="${item.url }" target="_blank"
+											title="查看原始文档">${item.domain }</a></li>
 										<li class="tags"><span class="tag_container"></span> <a
 											class="edit"><span>添加标记</span></a></li>
 									</ul>
@@ -1432,5 +1470,6 @@ transform
 			<div></div>
 		</div>
 	</div>
+	<script type="text/javascript" src="<%=basePath%>js/index.js"></script>
 </body>
 </html>

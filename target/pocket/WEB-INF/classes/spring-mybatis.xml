@@ -6,10 +6,10 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
-	
+
 	<!-- 自动扫描 -->
 	<context:component-scan base-package="com.shixq.pocket" />
-	
+
 	<!-- 引入配置文件 -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -18,20 +18,20 @@
 
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="${driver}" />
-		<property name="url" value="${url}" />
-		<property name="username" value="${username}" />
-		<property name="password" value="${password}" />
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://www.shixq.com:3306/pocket" />
+		<property name="username" value="shixq" />
+		<property name="password" value="shixq956" />
 		<!-- 初始化连接大小 -->
-		<property name="initialSize" value="${initialSize}"></property>
+		<property name="initialSize" value="1"></property>
 		<!-- 连接池最大数量 -->
-		<property name="maxActive" value="${maxActive}"></property>
+		<property name="maxActive" value="20"></property>
 		<!-- 连接池最大空闲 -->
-		<property name="maxIdle" value="${maxIdle}"></property>
+		<property name="maxIdle" value="20"></property>
 		<!-- 连接池最小空闲 -->
-		<property name="minIdle" value="${minIdle}"></property>
+		<property name="minIdle" value="1"></property>
 		<!-- 获取连接最大等待时间 -->
-		<property name="maxWait" value="${maxWait}"></property>
+		<property name="maxWait" value="60000"></property>
 		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
 		<property name="timeBetweenEvictionRunsMillis" value="60000" />
 		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
@@ -45,7 +45,8 @@
 		<!--如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。 -->
 		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
 		<property name="poolPreparedStatements" value="true" />
-		<property name="maxPoolPreparedStatementPerConnectionSize" value="50" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="50" />
 	</bean>
 
 	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
@@ -66,5 +67,5 @@
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-
+	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>  

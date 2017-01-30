@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<web-app
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance
+	http://www.springmodules.org/schema/cache/springmodules-cache.xsd
+	http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd"
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
@@ -48,8 +51,14 @@
 		<!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<async-supported>true</async-supported>
+
 	<welcome-file-list>
 		<welcome-file>/index.jsp</welcome-file>
 	</welcome-file-list>
-
+	<!-- 配置SESSION超时，单位是分钟 -->
+	<session-config>
+		<session-timeout>15</session-timeout>
+	</session-config>
 </web-app>  
