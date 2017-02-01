@@ -31,6 +31,6 @@ public class IndexService {
 	 */
 	@Transactional(readOnly = true)
 	public void insertUrl(String url,DeferredResult<String> deferredResult) {
-		Spider.create(new WebPageProcessor(webPageDao,deferredResult)).addUrl(url).thread(5).run();
+		Spider.create(new WebPageProcessor(webPageDao,deferredResult)).addUrl(url).addPipeline(new WebPagePipeline("d:/webmagic/test/")).thread(5).run();
 	}
 }

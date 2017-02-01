@@ -174,7 +174,12 @@
 			<artifactId>webmagic-extension</artifactId>
 			<version>0.6.1</version>
 		</dependency>
-
+		<!-- webcollector爬虫正文提取 -->
+		<dependency>
+			<groupId>cn.edu.hfut.dmic.webcollector</groupId>
+			<artifactId>WebCollector</artifactId>
+			<version>2.32</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
